@@ -1,0 +1,286 @@
+/* ===== General Setup ===== */
+* {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+}
+
+body {
+    min-height: 100vh;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    gap: 20px;
+
+    font-family: Arial, Helvetica, sans-serif;
+    color: white;
+
+    background:
+        radial-gradient(circle at top left, #302b63, transparent 40%),
+        radial-gradient(circle at bottom right, #24243e, transparent 40%),
+        #0f0c29;
+}
+
+
+/* ===== Main Heading ===== */
+#myh1 {
+    font-size: 42px;
+    text-align: center;
+
+    background: linear-gradient(90deg, #00dbde, #fc00ff);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+
+    margin-bottom: 0;
+}
+
+
+/* ===== Creator ===== */
+#myh2 {
+    font-size: 16px;
+    font-weight: normal;
+    color: #aaa;
+    text-align: center;
+}
+
+
+/* ===== Ready Text ===== */
+h3 {
+    font-size: 22px;
+    color: #eee;
+    margin-top: 10px;
+}
+
+
+/* ===== Start Button ===== */
+#startbtn {
+    border: none;
+    padding: 14px 40px;
+
+    font-size: 18px;
+    font-weight: bold;
+    color: white;
+
+    border-radius: 12px;
+    cursor: pointer;
+
+    background: linear-gradient(135deg, #00dbde, #fc00ff);
+
+    box-shadow: 0 0 20px rgba(0, 219, 222, 0.35);
+
+    transition: 0.3s ease;
+}
+
+#startbtn:hover {
+    transform: translateY(-3px) scale(1.03);
+    box-shadow: 0 0 30px rgba(252, 0, 255, 0.5);
+}
+
+
+/* ===== Quiz Container ===== */
+#container {
+    width: min(600px, 90%);
+    padding: 30px;
+
+    background: rgba(255, 255, 255, 0.08);
+    border: 1px solid rgba(255, 255, 255, 0.15);
+
+    border-radius: 20px;
+
+    backdrop-filter: blur(15px);
+    -webkit-backdrop-filter: blur(15px);
+
+    box-shadow: 0 15px 40px rgba(0, 0, 0, 0.4);
+
+    text-align: center;
+}
+
+
+/* ===== Question ===== */
+#question {
+    font-size: 24px;
+    font-weight: bold;
+    line-height: 1.5;
+
+    margin-bottom: 25px;
+
+    color: #ffffff;
+}
+
+
+/* ===== Answer Buttons ===== */
+label {
+    display: flex;
+    flex-direction: column;
+    gap: 12px;
+}
+
+
+#a1,
+#a2,
+#a3,
+#a4 {
+    width: 100%;
+    padding: 14px 18px;
+
+    border: 1px solid rgba(255, 255, 255, 0.15);
+    border-radius: 10px;
+
+    background: rgba(255, 255, 255, 0.08);
+    color: white;
+
+    font-size: 16px;
+    text-align: left;
+
+    cursor: pointer;
+
+    transition: 0.25s ease;
+}
+
+
+/* Answer Hover */
+#a1:hover,
+#a2:hover,
+#a3:hover,
+#a4:hover {
+    background: rgba(0, 219, 222, 0.18);
+    border-color: #00dbde;
+
+    transform: translateX(5px);
+
+    box-shadow: 0 0 15px rgba(0, 219, 222, 0.2);
+}
+
+
+/* ===== Message ===== */
+#message {
+    min-height: 25px;
+
+    font-size: 18px;
+    font-weight: bold;
+
+    text-decoration: none;
+}
+
+
+/* ===== Next Button ===== */
+#next {
+    border: none;
+
+    padding: 12px 35px;
+
+    border-radius: 10px;
+
+    background: #ffffff;
+    color: #15132b;
+
+    font-size: 16px;
+    font-weight: bold;
+
+    cursor: pointer;
+
+    transition: 0.25s ease;
+}
+
+#next:hover {
+    transform: translateY(-2px);
+
+    background: #00dbde;
+    color: white;
+
+    box-shadow: 0 0 20px rgba(0, 219, 222, 0.4);
+}
+
+
+/* ===== Mobile ===== */
+@media (max-width: 600px) {
+
+    #myh1 {
+        font-size: 30px;
+    }
+
+    #myh2 {
+        font-size: 14px;
+    }
+
+    h3 {
+        font-size: 18px;
+    }
+
+    #container {
+        padding: 20px;
+    }
+
+    #question {
+        font-size: 20px;
+    }
+}
+#final_score {
+    position: fixed;
+    inset: 0;
+
+    width: 100%;
+    height: 100vh;
+
+    z-index: 9999;
+
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    padding: 40px;
+
+    background:
+        radial-gradient(circle at center, #302b63, #0f0c29 70%);
+
+    color: white;
+    text-decoration: none;
+    text-align: center;
+
+    font-size: 45px;
+    font-weight: bold;
+
+    opacity: 0;
+    visibility: hidden;
+    pointer-events: none;
+
+    transform: scale(0.5);
+}
+
+#final_score:not(:empty) {
+    opacity: 1;
+    visibility: visible;
+    pointer-events: auto;
+
+    transform: scale(1);
+
+    transition:
+        opacity 0.5s ease,
+        transform 0.6s ease;
+}
+
+
+/* Celebration */
+#final_score:not(:empty)::before {
+    content: "🎉";
+
+    position: absolute;
+
+    top: 20%;
+
+    font-size: 90px;
+
+    animation: celebrate 1s infinite alternate;
+}
+
+
+@keyframes celebrate {
+    from {
+        transform: translateY(0) rotate(-5deg);
+    }
+
+    to {
+        transform: translateY(-15px) rotate(5deg);
+    }
+}
