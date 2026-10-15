@@ -100,15 +100,11 @@ h3 {
     color: #ffffff;
 }
 
-
-/* ===== Answer Buttons ===== */
 label {
     display: flex;
     flex-direction: column;
-    gap: 12px;
+    gap: 13px;
 }
-
-
 #a1,
 #a2,
 #a3,
